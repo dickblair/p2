@@ -3,10 +3,12 @@
 + Production URL: <http://p2.ambitiously.me>
 
 ## Overview
-This application takes different factors from a user and demonstrates how to use them to calculate life insurance coverage.
+This application takes different factors from a user and demonstrates how to use them to calculate ways to save on life insurance coverage.
 
 ## Outside resources
-TBD
+w3schools.com
+php.net
+www.html.am
 
 
 ## Notes for instructor
