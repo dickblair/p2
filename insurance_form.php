@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/css/styles.css">
-
     <title>H. Groan Insurance</title>
 
 </head>
@@ -18,14 +16,12 @@
     $gender = $maritalStatus = $age = '';
 
 
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST["gender"])) {
                $genderValidation = "<span class='error'>Sex is required.</span>";
             }else {
                $gender = validate($_POST["gender"]);
             }
-
 
             if (empty($_POST["maritalStatus"])) {
                $maritalStatusValidation = "<span class='error'>Please select your marital status.</span>";
@@ -39,24 +35,27 @@
                $age = validate($_POST["age"]);
             }
          }
+         //this function helps prevent against malicious attacks
          function validate($inputs) {
             $inputs = trim($inputs);
             $inputs = stripslashes($inputs);
             $inputs = htmlspecialchars($inputs);
-         return $inputs;
+            return $inputs;
          }
 
-         function getSpecialMessage($specialMessage) {
+         //this function creates a customized message based on what the user provided that indicates how the user can save on insurance
+         function getSpecialMessage() {
+             global $gender, $maritalStatus, $age, $specialMessage;
 
              $specialMessage = 'Let us figure out how to make your insurance affordable.';
             if(isset($maritalStatus, $gender, $age)){
 
              if('married' != $maritalStatus) {
                 $specialMessage  = 'We have calculated you can save on your life insurance by getting married.';
-             } else if('male' == $gender) {
+             } elseif('male' == $gender) {
                 $specialMessage = 'Becoming female will lower your life insurance rates.';
 
-             } else if ($age > 50){
+             } elseif ($age > 50){
 
                 $specialMessage = 'We have determined your life insurance will only get more expensive from here';
              } else {
@@ -67,6 +66,7 @@
 
             return $specialMessage;
          }
+
 
 
 
@@ -114,11 +114,12 @@
 
     <?php
         if (count($_POST)>0) {
+
             echo '<div class="highlight">';
             echo '<h2 class="center"> This is what you told us:</h2>';
             if(isset($age, $gender, $maritalStatus)) {
                 echo '<p class="center"> You are a ' . $age . ' year old ' . $gender . ' who is ' . $maritalStatus . '.</p>';
-                echo '<div class="center">' . getSpecialMessage($specialMessage) . '</div>';
+                echo '<div class="center">' . getSpecialMessage() . '</div>';
             }
             echo '</div>';
         }

@@ -10,6 +10,19 @@ w3schools.com
 php.net
 html.am
 
+## 3 Unique inputs
 
-## Notes for instructor
-*Thank you in advance for your generosity.*
+(1) Radio button to select gender 
+(2) A select to indicate marital status
+(3) Text box to input a number representing age
+
+## Class
+*insurance_form.php
+
+## Code style divergences
+My file both declares symbols and generates a change.
+My file is not namespaced.
+
+
+
+
