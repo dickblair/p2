@@ -8,7 +8,7 @@ This application takes different factors from a user and demonstrates how to use
 ## Outside resources
 w3schools.com
 php.net
-www.html.am
+html.am
 
 
 ## Notes for instructor
